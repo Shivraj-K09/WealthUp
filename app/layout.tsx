@@ -2,16 +2,12 @@ import { Header } from "@/components/header";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
+import { BackgroundShape } from "@/components/background-shape";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -29,19 +25,22 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
+      className={`${inter.variable} antialiased`}
       suppressHydrationWarning
     >
-      <body className="h-full" suppressHydrationWarning>
+      <body className="min-h-screen bg-linear-to-br from-[#f8fafc] to-[#cfe6f7]" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          {children}
-          <Analytics />
+          <div className="relative w-full min-h-screen flex flex-col">
+            <BackgroundShape />
+            <Header />
+            {children}
+            <Analytics />
+          </div>
         </ThemeProvider>
       </body>
     </html>

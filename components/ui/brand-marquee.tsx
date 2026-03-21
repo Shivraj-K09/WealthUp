@@ -30,6 +30,7 @@ export interface BrandMarqueeProps {
   title?: string;
   className?: string;
   speed?: number;
+  isStatic?: boolean;
 }
 
 const MarqueeStyles = React.memo(() => (
@@ -53,18 +54,21 @@ const MarqueeRow = React.memo(
     speed = 50,
     className,
     pauseOnHover = true,
+    isStatic = false,
   }: {
     children: React.ReactNode;
     speed?: number;
     className?: string;
     pauseOnHover?: boolean;
+    isStatic?: boolean;
   }) => {
     return (
-      <div className={cn("group flex overflow-hidden [--gap:3rem]", className)}>
+      <div className={cn("group flex overflow-hidden", className)}>
         <div
           className={cn(
-            "flex shrink-0 justify-start items-center [gap:var(--gap)] min-w-full pr-[var(--gap)] will-change-transform [backface-visibility:hidden] animate-marquee-left",
-            pauseOnHover && "group-hover:[animation-play-state:paused]",
+            "flex items-center will-change-transform backface-hidden",
+            isStatic ? "w-full justify-evenly gap-4 px-2" : "shrink-0 justify-around min-w-full gap-12 pr-12 animate-marquee-left",
+            !isStatic && pauseOnHover && "group-hover:paused",
           )}
           style={
             {
@@ -74,20 +78,22 @@ const MarqueeRow = React.memo(
         >
           {children}
         </div>
-        <div
-          aria-hidden="true"
-          className={cn(
-            "flex shrink-0 justify-start items-center [gap:var(--gap)] min-w-full pr-[var(--gap)] will-change-transform [backface-visibility:hidden] animate-marquee-left",
-            pauseOnHover && "group-hover:[animation-play-state:paused]",
-          )}
-          style={
-            {
-              "--duration": `${speed}s`,
-            } as React.CSSProperties
-          }
-        >
-          {children}
-        </div>
+        {!isStatic && (
+          <div
+            aria-hidden="true"
+            className={cn(
+              "flex shrink-0 justify-around items-center gap-(--gap) min-w-full pr-(--gap) will-change-transform backface-hidden animate-marquee-left",
+              pauseOnHover && "group-hover:paused",
+            )}
+            style={
+              {
+                "--duration": `${speed}s`,
+              } as React.CSSProperties
+            }
+          >
+            {children}
+          </div>
+        )}
       </div>
     );
   },
@@ -102,7 +108,7 @@ const BrandItem = React.memo(
     const logoUrl = getLogoUrl(brand);
     const IconComponent = brand.icon;
     const iconClassName =
-      "h-8 w-8 shrink-0 text-[#1f3a52] opacity-85 hover:opacity-100 transition-all duration-300";
+      "h-8 w-8 shrink-0 text-[#294F7C] opacity-85 hover:opacity-100 transition-all duration-300";
 
     return (
       <div
@@ -117,12 +123,12 @@ const BrandItem = React.memo(
           <img
             src={logoUrl}
             alt={brand.alt ?? brand.name}
-            className="h-8 w-auto max-w-[140px] min-w-[60px] object-contain object-center opacity-85 hover:opacity-100 transition-all duration-300"
+            className="h-8 w-auto max-w-[120px] min-w-[60px] object-contain object-center opacity-85 hover:opacity-100 transition-all duration-300"
           />
         ) : (
           <span
             className="font-semibold text-sm whitespace-nowrap"
-            style={{ color: brand.textColor ?? "#1f3a52" }}
+            style={{ color: brand.textColor ?? "#294F7C" }}
           >
             {brand.name}
           </span>
@@ -144,8 +150,10 @@ export function BrandMarquee({
   title = "Backed By",
   className,
   speed = 50,
+  isStatic = false,
 }: BrandMarqueeProps) {
   const brandsToDisplay = React.useMemo(() => {
+    if (isStatic) return brands;
     let result = [...brands];
     while (result.length < 14) {
       result = [...result, ...brands];
@@ -156,13 +164,13 @@ export function BrandMarquee({
   return (
     <>
       <MarqueeStyles />
-      <section className={cn("w-full mt-24 md:mt-36 pt-14 md:pt-20 pb-14 md:pb-20", className)}>
-        <div className="w-full max-w-[1250px] mx-auto px-8 md:px-12">
-          <h2 className="text-center font-bold text-[#1f3a52] text-xl md:text-2xl tracking-tight mb-10">
-            {title}
-          </h2>
-          <div className="rounded-2xl md:rounded-3xl border border-[#b8d4e8]/80 bg-gradient-to-b from-white/95 via-[#e8f4fc]/90 to-[#dceef9] shadow-[0_8px_32px_rgba(80,140,200,0.08),0_2px_8px_rgba(100,150,200,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] overflow-hidden backdrop-blur-sm">
-            <MarqueeRow speed={speed} className="py-10 px-8 [--gap:4rem]">
+      <section className={cn("w-full mt-20 md:mt-28 py-10", className)}>
+        <div className="w-full max-w-[1040px] mx-auto px-8 md:px-0">
+          <div className="relative h-[150px] flex flex-col items-center justify-center rounded-[20px] border border-white/50 bg-white/5 backdrop-blur-md shadow-[0_8px_32px_rgba(0,120,255,0.05),inset_0_0_12px_rgba(255,255,255,0.3)] overflow-hidden">
+            <h2 className="text-center font-bold text-[#294F7C] text-[13px] tracking-[0.15em] uppercase mb-4 mt-2">
+              {title}
+            </h2>
+            <MarqueeRow speed={speed} className="w-full [--gap:4rem] py-2" isStatic={isStatic}>
               {brandsToDisplay.map((brand, i) => (
                 <BrandItem key={`${brand.name}-${i}`} brand={brand} />
               ))}

@@ -13,7 +13,7 @@ const goalConfig = {
     btnText: "Let's get your car",
     btnIcon: "/car1.png",
     largeImage: "/car2.png",
-    imageClasses: "w-[90%] lg:w-[125%] max-w-[320px] lg:max-w-[550px]",
+    imageClasses: "w-[90%] lg:w-[95%] max-w-[320px] lg:max-w-[460px]",
     defaultPrice: 2000000,
   },
   Travel: {
@@ -22,7 +22,7 @@ const goalConfig = {
     btnText: "Let's plan your trip",
     btnIcon: "/airoplane.png",
     largeImage: "/airoplane1.png",
-    imageClasses: "w-[80%] lg:w-[110%] max-w-[280px] lg:max-w-[480px]",
+    imageClasses: "w-[80%] lg:w-[85%] max-w-[280px] lg:max-w-[400px]",
     defaultPrice: 500000,
   },
   Home: {
@@ -31,7 +31,7 @@ const goalConfig = {
     btnText: "Let's get your house",
     btnIcon: "/house.png",
     largeImage: "/house1.png",
-    imageClasses: "w-[60%] lg:w-[75%] max-w-[200px] lg:max-w-[280px]",
+    imageClasses: "w-[60%] lg:w-[65%] max-w-[200px] lg:max-w-[240px]",
     defaultPrice: 10000000,
   },
   Custom: {
@@ -40,7 +40,7 @@ const goalConfig = {
     btnText: "Let's reach your goal",
     btnIcon: "/target.png",
     largeImage: "/target1.png",
-    imageClasses: "w-[55%] lg:w-[70%] max-w-[180px] lg:max-w-[240px]",
+    imageClasses: "w-[55%] lg:w-[60%] max-w-[180px] lg:max-w-[220px]",
     defaultPrice: 1000000,
   },
 };
@@ -79,43 +79,43 @@ export function Hero() {
   const config = goalConfig[activeGoal];
 
   return (
-    <main className="flex flex-col lg:flex-row justify-between items-center lg:items-start pt-[130px] lg:pt-[170px] px-8 md:px-12 w-full max-w-[1250px] mx-auto z-20 pb-20 relative">
+    <main className="flex flex-col lg:flex-row justify-between items-center lg:items-start pt-[130px] lg:pt-[170px] px-8 md:px-0 w-full max-w-[1040px] mx-auto z-20 pb-20 relative">
       {/* Left Section (Text & Categories) */}
-      <section className="flex flex-col w-full lg:w-[50%] mt-2 lg:mt-4 gap-7 shrink-0 items-center lg:items-start text-center lg:text-left">
+      <section className="flex flex-col w-full max-w-[480px] shrink-0 items-center lg:items-start text-center lg:text-left">
         {/* Trust Badge */}
-        <article className="flex items-center gap-3 bg-white/40 backdrop-blur-md px-3 py-1.5 rounded-full w-fit border border-white/60 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
-          <figure className="flex -space-x-1.5 m-0">
+        <article className="flex items-center gap-3 pl-1 pr-4 bg-white/30 backdrop-blur-md rounded-full w-[280px] h-[30px] border border-white/50">
+          <figure className="flex -space-x-2 m-0 shrink-0">
             <img
               src="https://i.pravatar.cc/100?img=1"
               alt="user"
-              className="w-6 h-6 rounded-full border-[1.5px] border-white object-cover shadow-sm pointer-events-none"
+              className="w-[26px] h-[26px] rounded-full border border-white object-cover pointer-events-none"
             />
             <img
               src="https://i.pravatar.cc/100?img=2"
               alt="user"
-              className="w-6 h-6 rounded-full border-[1.5px] border-white object-cover shadow-sm pointer-events-none"
+              className="w-[26px] h-[26px] rounded-full border border-white object-cover pointer-events-none"
             />
             <img
               src="https://i.pravatar.cc/100?img=3"
               alt="user"
-              className="w-6 h-6 rounded-full border-[1.5px] border-white object-cover shadow-sm pointer-events-none"
+              className="w-[26px] h-[26px] rounded-full border border-white object-cover pointer-events-none"
             />
           </figure>
-          <span className="text-[11px] text-[#7a93a8] font-medium italic pr-2">
+          <span className="text-[13px] text-[#424242] font-light italic">
             Trusted by over 2,000 users
           </span>
         </article>
 
         {/* Heading Block */}
         <header>
-          <h1 className="text-[40px] md:text-[54px] lg:text-[60px] leading-[1.05] font-bold text-[#1f3a52] tracking-tight mb-4">
+          <h1 className="text-[40px] md:text-[54px] lg:text-[60px] leading-[1.05] font-bold text-[#294F7C] tracking-tight mb-4">
             Plan your life
             <br className="hidden md:block" />
-            goals. <span className="text-[#4994df]">We'll plan</span>
+            goals. <span className="text-[#4A90E2]">We'll plan</span>
             <br className="hidden md:block" />
-            <span className="text-[#4994df]">the investments.</span>
+            <span className="text-[#4A90E2]">the investments.</span>
           </h1>
-          <p className="text-[15px] md:text-[16px] text-[#5d778f] max-w-[340px] font-medium leading-[1.6] mx-auto lg:mx-0">
+          <p className="text-[15px] md:text-[16px] text-[#294F7C] max-w-[340px] font-medium leading-[1.6] mx-auto lg:mx-0">
             WealthUp helps you achieve goals through
             <br className="hidden md:block" />
             personalised goal based investing.
@@ -131,21 +131,21 @@ export function Hero() {
               <div
                 key={key}
                 onClick={() => handleGoalChange(key)}
-                className={`border-[1.5px] rounded-[18px] p-3 md:p-4 flex items-center gap-3 md:gap-4 transition-all cursor-pointer ${
+                className={`w-[180px] h-[100px] border backdrop-blur-md bg-[#F8FAFC]/20 rounded-[18px] flex flex-row justify-start pl-[20px] items-center gap-3 transition-all cursor-pointer ${
                   isActive
-                    ? "bg-linear-to-b from-[#eff5fa] to-[#e4f0f9] border-[#d8eaf6] shadow-[0_0_20px_rgba(150,200,240,0.6)]"
-                    : "bg-white/40 border-white/60 backdrop-blur-sm hover:shadow-sm shadow-[0_2px_10px_rgba(180,210,240,0.1)]"
+                    ? "border-[#294F7C] shadow-[0_6px_20px_-6px_rgba(41,79,124,0.3)] bg-[#F8FAFC]/40"
+                    : "border-white/50 hover:bg-[#F8FAFC]/30 shadow-[0_4px_16px_rgba(0,0,0,0.02)]"
                 }`}
               >
-                <div className="w-9 h-7 relative flex items-center justify-center shrink-0">
+                <div className="w-[76px] h-[56px] relative flex items-center justify-center shrink-0">
                   <Image
                     src={category.btnIcon}
                     alt={key}
                     fill
-                    className="object-contain drop-shadow"
+                    className="object-contain drop-shadow-sm"
                   />
                 </div>
-                <span className="font-semibold text-[#1f3a52] text-[15px] md:text-[16px]">
+                <span className="font-medium text-[#294F7C] text-[15px] md:text-[16px]">
                   {key}
                 </span>
               </div>
@@ -155,29 +155,29 @@ export function Hero() {
       </section>
 
       {/* Right Section (Calculator Card & 3D Feature Image) */}
-      <section className="w-full lg:w-[44%] flex flex-col items-center lg:items-end justify-start relative z-20 shrink-0 mt-16 lg:mt-0">
+      <section className="w-full lg:w-auto flex flex-col items-center lg:items-start justify-start relative z-20 shrink-0 mt-16 lg:mt-0">
         {/* This wrapper holds the Card + Feature Image logically together */}
-        <article className="flex flex-col items-center lg:items-end w-full max-w-[420px] relative">
+        <article className="flex flex-col items-center lg:items-start w-full lg:w-[507px] relative">
           {/* Main Calculator Card */}
-          <div className="bg-[#e9f1f8]/90 border-[1.5px] border-[#c0ddef] rounded-[32px] p-6 pb-7 w-full shadow-[0_16px_40px_rgba(160,205,240,0.35)] backdrop-blur-xl relative z-20 transition-all duration-300">
-            <h3 className="text-center font-bold text-[#1f3a52] text-[15px] mb-6">
+          <div className="bg-[#F8FAFC]/20 backdrop-blur-md border-[1.5px] border-[#4A90E2] rounded-[32px] p-6 pb-7 w-full lg:h-[338px] flex flex-col shadow-[0_8px_32px_rgba(0,150,255,0.15)] relative z-20 transition-all duration-300">
+            <h3 className="text-center font-bold text-[#294F7C] text-[17px] mb-8">
               {config.title}
             </h3>
 
-            <div className="flex justify-between items-stretch">
+            <div className="flex justify-between items-stretch grow">
               {/* Left Side: Sliders & Button */}
-              <div className="flex flex-col justify-between w-[52%]">
-                <div className="flex flex-col grow">
+              <div className="flex flex-col justify-between w-[48%] h-full shrink-0">
+                <div className="flex flex-col gap-6 grow">
                   {/* Slider 1 */}
-                  <div className="flex flex-col w-full mb-5 transition-all">
-                    <div className="flex justify-between items-center mb-2.5">
-                      <span className="text-[12px] font-medium text-[#6b86a0]">
-                        {config.slider1Label}
-                      </span>
-                      <span className="text-[13px] font-bold text-[#1f3a52]">
-                        {formatCurrency(goalAmount)}
-                      </span>
-                    </div>
+                  <div className="flex flex-col w-full mb-4 transition-all">
+                    <div className="flex justify-between items-center mb-2">
+                    <span className="text-[13px] text-[#294F7C] font-medium">
+                      {config.slider1Label}
+                    </span>
+                    <span className="text-[14px] font-semibold text-[#294F7C]">
+                      {formatCurrency(goalAmount)}
+                    </span>
+                  </div>
                     {/* Track */}
                     <div className="w-full px-[8px]">
                       <Slider
@@ -197,15 +197,15 @@ export function Hero() {
                   </div>
 
                   {/* Slider 2 */}
-                  <div className="flex flex-col w-full mb-3">
-                    <div className="flex justify-between items-center mb-2.5">
-                      <span className="text-[12px] font-medium text-[#6b86a0]">
-                        Time to buy
-                      </span>
-                      <span className="text-[13px] font-bold text-[#1f3a52]">
-                        {timeToBuy} years
-                      </span>
-                    </div>
+                  <div className="flex flex-col w-full mb-2">
+                    <div className="flex justify-between items-center mb-2">
+                    <span className="text-[13px] text-[#294F7C] font-medium">
+                      Time to buy
+                    </span>
+                    <span className="text-[14px] font-semibold text-[#294F7C]">
+                      {timeToBuy} years
+                    </span>
+                  </div>
                     {/* Track */}
                     <div className="w-full px-[8px]">
                       <Slider
@@ -220,7 +220,8 @@ export function Hero() {
                   </div>
                 </div>
 
-                <button className="flex items-center justify-center gap-1.5 mt-5 h-[38px] bg-linear-to-b from-[#ffffff] to-[#eaf2f9] border border-[#d2e4f3] rounded-full text-[#1f3a52] font-semibold text-[12px] shadow-[0_4px_12px_rgba(180,210,240,0.4)] hover:shadow-[0_6px_16px_rgba(180,210,240,0.5)] transition-all w-[96%] group focus:outline-none focus:ring-2 focus:ring-[#8cbdec]">
+                <div className="mt-auto">
+                <button className="flex items-center justify-center gap-2 h-[42px] bg-linear-to-b from-[#ffffff] to-[#eaf2f9] border border-[#4A90E2] rounded-full text-[#294F7C] font-semibold text-[16px] shadow-[0_4px_12px_rgba(180,210,240,0.4)] hover:shadow-[0_6px_16px_rgba(180,210,240,0.5)] transition-all w-[96%] group focus:outline-none">
                   {config.btnText}
                   <Image
                     src={config.btnIcon}
@@ -231,14 +232,15 @@ export function Hero() {
                   />
                 </button>
               </div>
+            </div>
 
               {/* Right Side: Computed Results */}
-              <div className="flex flex-col items-center justify-between w-[44%] pl-2">
-                <div className="bg-[#fdfdfd] rounded-[20px] border border-[#d2e4f3] shadow-[0_8px_20px_rgba(170,205,235,0.35)] p-2 py-3 w-full text-center flex flex-col justify-center h-[76px] transition-all">
-                  <span className="text-[10px] text-[#6b86a0] font-medium block mb-0.5">
+              <div className="flex flex-col items-center justify-between w-[180px] py-1 shrink-0">
+                <div className="bg-white rounded-[20px] border-[1.5px] border-[#4A90E2] shadow-sm p-2 py-4 w-full text-center flex flex-col justify-center grow">
+                  <span className="text-[10px] text-[#294F7C] font-medium block mb-0.5">
                     Lump Sum
                   </span>
-                  <span className="text-[18px] font-bold text-[#1f3a52] tracking-tight transition-all">
+                  <span className="text-[24px] font-bold text-[#294F7C] tracking-tight transition-all">
                     {formatCurrency(lumpSum)}
                   </span>
                 </div>
@@ -247,11 +249,11 @@ export function Hero() {
                   OR
                 </div>
 
-                <div className="bg-[#fdfdfd] rounded-[20px] border border-[#d2e4f3] shadow-[0_8px_20px_rgba(170,205,235,0.35)] p-2 py-3 w-full text-center flex flex-col justify-center h-[76px] transition-all">
-                  <span className="text-[10px] text-[#6b86a0] font-medium block mb-0.5">
+                <div className="bg-white rounded-[20px] border-[1.5px] border-[#4A90E2] shadow-sm p-2 py-4 w-full text-center flex flex-col justify-center grow">
+                  <span className="text-[10px] text-[#294F7C] font-medium block mb-0.5">
                     Monthly SIP
                   </span>
-                  <span className="text-[18px] font-bold text-[#1f3a52] tracking-tight transition-all">
+                  <span className="text-[24px] font-bold text-[#294F7C] tracking-tight transition-all">
                     {formatCurrency(monthlySip)}
                   </span>
                 </div>
@@ -260,7 +262,7 @@ export function Hero() {
           </div>
 
           {/* Goal Feature Image - Anchored exactly centrally below the Card */}
-          <div className="absolute top-full mt-4 lg:mt-8 left-1/2 -translate-x-1/2 pointer-events-none z-10 flex justify-center transition-all duration-300 w-full lg:w-[130%]">
+          <div className="absolute top-full mt-2 lg:mt-6 left-1/2 -translate-x-1/2 pointer-events-none z-10 flex justify-center transition-all duration-300 w-full lg:w-full">
             <div
               className={`flex justify-center transition-all duration-500 ease-out origin-top ${config.imageClasses}`}
             >
